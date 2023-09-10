@@ -6,7 +6,7 @@ public static class HashBasedSearchCallbackBuilder
     #region Without elementSelector, without comparer
 
     
-    public static HashBasedSearchCallback<TSource?, TKey> BuildHashBasedSearchCallback<TSource, TKey>(
+    public static HashBasedSearchCallback<TKey, TSource?> BuildHashBasedSearchCallback<TSource, TKey>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         where TKey : notnull
     {
@@ -21,7 +21,7 @@ public static class HashBasedSearchCallbackBuilder
         return GetValueOrDefault;
     }
 
-    public static HashBasedSearchCallback<TSource, TKey> BuildHashBasedSearchCallback<TSource, TKey>(
+    public static HashBasedSearchCallback<TKey, TSource> BuildHashBasedSearchCallback<TSource, TKey>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TSource defaultValue)
         where TKey : notnull
     {
@@ -45,7 +45,7 @@ public static class HashBasedSearchCallbackBuilder
     #region With elementSelector, without comparer
 
     
-    public static HashBasedSearchCallback<TElement?, TKey> BuildHashBasedSearchCallback<TSource, TElement, TKey>(
+    public static HashBasedSearchCallback<TKey, TElement?> BuildHashBasedSearchCallback<TSource, TKey, TElement>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector)
         where TKey : notnull
     {
@@ -61,7 +61,7 @@ public static class HashBasedSearchCallbackBuilder
     }
 
 
-    public static HashBasedSearchCallback<TElement, TKey> BuildHashBasedSearchCallback<TSource, TElement, TKey>(
+    public static HashBasedSearchCallback<TKey, TElement> BuildHashBasedSearchCallback<TSource, TKey, TElement>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, TElement defaultValue)
         where TKey : notnull
     {
@@ -84,7 +84,7 @@ public static class HashBasedSearchCallbackBuilder
     
     #region Without elementSelector, with comparer
     
-    public static HashBasedSearchCallback<TSource?, TKey> BuildHashBasedSearchCallback<TSource, TKey>(
+    public static HashBasedSearchCallback<TKey, TSource?> BuildHashBasedSearchCallback<TSource, TKey>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey>? comparer)
         where TKey : notnull
     {
@@ -100,7 +100,7 @@ public static class HashBasedSearchCallbackBuilder
     }
     
 
-    public static HashBasedSearchCallback<TSource, TKey> BuildHashBasedSearchCallback<TSource, TKey>(
+    public static HashBasedSearchCallback<TKey, TSource> BuildHashBasedSearchCallback<TSource, TKey>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey>? comparer, TSource defaultValue)
         where TKey : notnull
     {
@@ -124,7 +124,7 @@ public static class HashBasedSearchCallbackBuilder
     #region With elementSelector, with comparer
 
     
-    public static HashBasedSearchCallback<TElement?, TKey> BuildHashBasedSearchCallback<TSource, TElement, TKey>(
+    public static HashBasedSearchCallback<TKey, TElement?> BuildHashBasedSearchCallback<TSource, TKey, TElement>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey>? comparer)
         where TKey : notnull
     {
@@ -140,7 +140,7 @@ public static class HashBasedSearchCallbackBuilder
     }
 
 
-    public static HashBasedSearchCallback<TElement, TKey> BuildHashBasedSearchCallback<TSource, TElement, TKey>(
+    public static HashBasedSearchCallback<TKey, TElement> BuildHashBasedSearchCallback<TSource, TKey, TElement>(
         this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey>? comparer, TElement defaultValue)
         where TKey : notnull
     {

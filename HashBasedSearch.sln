@@ -4,6 +4,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D516B129-C48
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashBasedSearch", "src\HashBasedSearch\HashBasedSearch.csproj", "{F339BE23-AF9E-47B2-8653-FCE8C6567D3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashBasedSearch.Tests", "src\HashBasedSearch.Tests\HashBasedSearch.Tests.csproj", "{FCF5FB8B-CA58-4FF5-8A60-BC0C34BF8817}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,8 +16,13 @@ Global
 		{F339BE23-AF9E-47B2-8653-FCE8C6567D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F339BE23-AF9E-47B2-8653-FCE8C6567D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F339BE23-AF9E-47B2-8653-FCE8C6567D3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF5FB8B-CA58-4FF5-8A60-BC0C34BF8817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF5FB8B-CA58-4FF5-8A60-BC0C34BF8817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF5FB8B-CA58-4FF5-8A60-BC0C34BF8817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF5FB8B-CA58-4FF5-8A60-BC0C34BF8817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F339BE23-AF9E-47B2-8653-FCE8C6567D3E} = {D516B129-C489-4D80-AC83-814E1FBA1CD9}
+		{FCF5FB8B-CA58-4FF5-8A60-BC0C34BF8817} = {D516B129-C489-4D80-AC83-814E1FBA1CD9}
 	EndGlobalSection
 EndGlobal
