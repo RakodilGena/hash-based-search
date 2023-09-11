@@ -1,5 +1,5 @@
 # hash-based-search
 
-v.0.0.2
+v.1.0.0
 
 Hash based search (on unaccessible (= immutable) dictionary).

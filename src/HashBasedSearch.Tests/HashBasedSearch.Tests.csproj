@@ -19,9 +19,5 @@
       <ProjectReference Include="..\HashBasedSearch\HashBasedSearch.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="NoSelectorWithComparerTests\" />
-      <Folder Include="WithSelectorWithComparerTests\" />
-    </ItemGroup>
 
 </Project>
