@@ -3,3 +3,5 @@ src/HashBasedSearch/obj
 src/HashBasedSearch/bin
 src/HashBasedSearch.Tests/bin
 src/HashBasedSearch.Tests/obj
+src/HashBasedSearch.Benchmarking/bin
+src/HashBasedSearch.Benchmarking/obj
