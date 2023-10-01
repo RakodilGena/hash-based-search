@@ -6,7 +6,7 @@ namespace HashBasedSearch.Tests.WithSelectorWithComparerTests;
 public class WithSelectorWithComparerTest
 {
     [TestMethod]
-    public void ClassWithNoDefaultTest1()
+    public void ClassWithNoDefaultTest_Existing()
     {
         TestComplexClass[] testData = TestDataInitializer.InitComplexClassData(50, dataCount: 10, dataTemplate: "string");
         HashBasedSearchCallback<TestComplexClassKey, string?> searchCallback =
@@ -23,7 +23,7 @@ public class WithSelectorWithComparerTest
     }
     
     [TestMethod]
-    public void ClassWithNoDefaultTest2()
+    public void ClassWithNoDefaultTest_NotExisting()
     {
         TestComplexClass[] testData = TestDataInitializer.InitComplexClassData(50, dataCount: 10, dataTemplate: "string");
         HashBasedSearchCallback<TestComplexClassKey, string?> searchCallback = 
@@ -39,7 +39,7 @@ public class WithSelectorWithComparerTest
     
     
     [TestMethod]
-    public void ClassWithDefaultTest1()
+    public void ClassWithDefaultTest_Existing()
     {
         TestComplexClass[] testData = TestDataInitializer.InitComplexClassData(50, dataCount: 10, dataTemplate: "string");
 
@@ -60,7 +60,7 @@ public class WithSelectorWithComparerTest
     }
     
     [TestMethod]
-    public void ClassWithDefaultTest2()
+    public void ClassWithDefaultTest_NotExisting()
     {
         TestComplexClass[] testData = TestDataInitializer.InitComplexClassData(50, dataCount: 10, dataTemplate: "string");
 

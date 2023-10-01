@@ -4,7 +4,7 @@
 public class WithSelectorNoComparerTest
 {
     [TestMethod]
-    public void ClassWithNoDefaultTest1()
+    public void ClassWithNoDefaultTest_Existing()
     {
         TestClass[] testData = TestDataInitializer.InitClassData(50, nameTemplate: "string");
         HashBasedSearchCallback<int, string?> searchCallback = testData.BuildHashBasedSearchCallback(
@@ -19,7 +19,7 @@ public class WithSelectorNoComparerTest
     }
     
     [TestMethod]
-    public void ClassWithNoDefaultTest2()
+    public void ClassWithNoDefaultTest_NotExisting()
     {
         TestClass[] testData = TestDataInitializer.InitClassData(50);
         HashBasedSearchCallback<int, string?> searchCallback = testData.BuildHashBasedSearchCallback(
@@ -33,7 +33,7 @@ public class WithSelectorNoComparerTest
     
     
     [TestMethod]
-    public void ClassWithDefaultTest1()
+    public void ClassWithDefaultTest_Existing()
     {
         TestClass[] testData = TestDataInitializer.InitClassData(50, nameTemplate: "string");
         string defaultString = "default";
@@ -50,7 +50,7 @@ public class WithSelectorNoComparerTest
     }
     
     [TestMethod]
-    public void ClassWithDefaultTest2()
+    public void ClassWithDefaultTest_NotExisting()
     {
         TestClass[] testData = TestDataInitializer.InitClassData(50, nameTemplate: "string");
         string defaultString = "default";
@@ -65,7 +65,7 @@ public class WithSelectorNoComparerTest
     }
     
     [TestMethod]
-    public void StructWithNoDefaultTest1()
+    public void StructWithNoDefaultTest_Existing()
     {
         int[] testData = TestDataInitializer.InitStructData(50);
 
@@ -84,7 +84,26 @@ public class WithSelectorNoComparerTest
     }
     
     [TestMethod]
-    public void StructWithNoDefaultTest2()
+    public void StructWithNoDefaultTestNullable_Existing()
+    {
+        int[] testData = TestDataInitializer.InitStructData(50);
+
+        int multiplier = 10;
+
+        HashBasedSearchCallback<int, int?> searchCallback = testData.BuildHashBasedSearchCallbackNullable(
+            keySelector: c => c, elementSelector: c => c * multiplier);
+        
+        int existingKey = 30;
+
+        int expectedValue = existingKey * multiplier; 
+        
+        int? actualValue = searchCallback(existingKey);
+        
+        Assert.AreEqual(expectedValue, actualValue);
+    }
+    
+    [TestMethod]
+    public void StructWithNoDefaultTest_NotExisting()
     {
         int[] testData = TestDataInitializer.InitStructData(50);
 
@@ -102,9 +121,29 @@ public class WithSelectorNoComparerTest
         Assert.AreNotEqual(notExpectedValue, actualValue);
     }
     
+    [TestMethod]
+    public void StructWithNoDefaultTestNullable_NotExisting()
+    {
+        int[] testData = TestDataInitializer.InitStructData(50);
+
+        int multiplier = 10;
+
+        HashBasedSearchCallback<int, int?> searchCallback = testData.BuildHashBasedSearchCallbackNullable(
+            keySelector: c => c, elementSelector: c => c * multiplier);
+        
+        int notExistingKey = 100;
+        
+        int notExpectedValue = notExistingKey * multiplier; 
+        
+        int? actualValue = searchCallback(notExistingKey);
+        
+        Assert.AreNotEqual(notExpectedValue, actualValue);
+        Assert.AreEqual(null, actualValue);
+    }
+    
     
     [TestMethod]
-    public void StructWithDefaultTest1()
+    public void StructWithDefaultTest_Existing()
     {
         int[] testData = TestDataInitializer.InitStructData(50);
 
@@ -123,7 +162,7 @@ public class WithSelectorNoComparerTest
     }
     
     [TestMethod]
-    public void StructWithDefaultTest2()
+    public void StructWithDefaultTest_NotExisting()
     {
         int[] testData = TestDataInitializer.InitStructData(50);
 

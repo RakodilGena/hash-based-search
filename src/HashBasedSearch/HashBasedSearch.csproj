@@ -4,6 +4,19 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Description>A small package of extension methods for generic collections to reduce the amount of code required to organize a readonly dictionary lookup by constructing appropriate delegates. Supports returning a preset default value if the searched element is missing. Supports existing methods of constructing a dictionary based on .ToDictionary overloads.</Description>
+        <RepositoryUrl>https://github.com/RakodilGena/hash-based-search</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>1.0.2</Version>
+        <Title>HashBasedSearch</Title>
+        <Authors>RakodilGena</Authors>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="docs\LICENSE" Pack="true" PackagePath=""/>
+        <None Include="docs\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
 
 </Project>
