@@ -1,18 +1,18 @@
 # hash-based-search
 
-v.1.0.2
-
-A small package of extension methods for generic collections 
-to reduce the amount of code required to organize a readonly dictionary lookup 
-by constructing appropriate delegates. 
+A small package of extension methods for generic collections
+to reduce the amount of code required to organize a readonly dictionary lookup
+by constructing appropriate delegates.
 
 Dictionary is totally readonly since nothing except constructed delegate has access to it.
 
 Supports existing methods of constructing a dictionary based on .ToDictionary overloads.
 Supports returning a preset default value if the searched element is missing.
+Supports building search delegate from collection of KeyValuePair's.
+Supports building search delegate from another Dictionary (by creating new one based on existing).
 
 Benchmarking of some methods presented below.
-SimpleSearch is implementation of linear search, 
+SimpleSearch is implementation of linear search,
 DictionarySearch~ presents common approach
 and HashBasedSearch~ presents library usage.
 
@@ -58,23 +58,29 @@ for reducing the amount of code required to perform a dictionary lookup.
 | DictionarySearchOnEmptyCollectionWithDefaultValue | 1000  |     2,641.88 ns |      9.534 ns |      8.451 ns |     2,640.72 ns |  0.4959 |      - |    4176 B |
 | HashBasedSearchOnEmptyCollectionWithDefaultValue  | 1000  |     5,121.14 ns |     26.226 ns |     20.476 ns |     5,113.87 ns |  0.5112 |      - |    4320 B |
 
-common usage is having some collection, for example:
+Common usage is having some collection, for example:
 
+```cs
 record Entity(long Id, string Name, int SomeValue);
 
 IEnumerable<Entity> entities;
 
+void TestOne()
 {
     HashBasedSearchCallback<long, Entity?> searchEntityCallBack =
-    entities.BuildHashBasedSearchCallback(keySelector: entity => entity.Id);
+        entities.BuildHashBasedSearchCallback(keySelector: entity => entity.Id);
+    
     //result is nullable since collection element is nullable and no default value presented
     Entity? searchedEntity = searchEntityCallBack(key: 10);
 }
 
+void TestTwo()
 {
-    HashBasedSearchCallback<long, int?> searchValueCallBack = entities.BuildHashBasedSearchCallbackNullable(
-        keySelector: entity => entity.Id,
-        elementSelector: entity => entity.SomeValue);
+    HashBasedSearchCallback<long, int?> searchValueCallBack = 
+        entities.BuildHashBasedSearchCallbackNullable(
+            keySelector: entity => entity.Id,
+            elementSelector: entity => entity.SomeValue);
+    
     //result is nullable since we use ~Nullable extension on not-nullable resulting element.
     int? searchedValue = searchValueCallBack(key: 10);
     if (searchedValue is null)
@@ -83,12 +89,16 @@ IEnumerable<Entity> entities;
     }
 }
 
+void TestThree()
 {
-    HashBasedSearchCallback<long, string> searchNameCallBack = entities.BuildHashBasedSearchCallback(
-        keySelector: entity => entity.Id,
-        elementSelector: entity => entity.Name,
-        defaultValue: "Name is unknown");
+    HashBasedSearchCallback<long, string> searchNameCallBack =
+        entities.BuildHashBasedSearchCallback(
+            keySelector: entity => entity.Id,
+            elementSelector: entity => entity.Name,
+            defaultValue: "Name is unknown");
+    
     //nullable type result is never null if default value is presented.
     string searchedName = searchNameCallBack(key: 10)!;
     Debug.Assert(searchedName is not null);
 }
+```

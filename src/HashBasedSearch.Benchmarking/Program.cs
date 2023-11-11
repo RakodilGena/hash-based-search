@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using HashBasedSearch;
 
@@ -30,7 +29,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in TransformKeys(keys))
         {
-            SimpleEntity? foundEntity = collection.FirstOrDefault(entity => entity.Id == key);
+            _ = collection.FirstOrDefault(entity => entity.Id == key);
         }
     }
     
@@ -43,7 +42,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in TransformKeys(keys))
         {
-            SimpleEntity? foundEntity = GetSimpleEntityFromDictionary(dict, key);
+            _ = GetSimpleEntityFromDictionary(dict, key);
         }
     }
 
@@ -62,7 +61,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in TransformKeys(keys))
         {
-            SimpleEntity? foundEntity = searchCallback(key);
+            _ = searchCallback(key);
         }
     }
 
@@ -76,7 +75,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in TransformKeys(keys))
         {
-            SimpleEntity foundEntity = GetSimpleEntityFromDictionary(dict, key, defaultEntity);
+            _ = GetSimpleEntityFromDictionary(dict, key, defaultEntity);
         }
     }
     
@@ -96,7 +95,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in TransformKeys(keys))
         {
-            SimpleEntity foundEntity = searchCallback(key)!;
+            _ = searchCallback(key)!;
         }
     }
 
@@ -109,7 +108,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in keys)
         {
-            SimpleEntity? foundEntity = GetSimpleEntityFromDictionary(dict, key);
+            _ = GetSimpleEntityFromDictionary(dict, key);
         }
     }
     
@@ -122,7 +121,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in TransformKeys(keys))
         {
-            SimpleEntity? foundEntity = searchCallback(key);
+            _ = searchCallback(key);
         }
     }
     
@@ -137,7 +136,7 @@ public class BenchmarkHashBasedSearch
         
         foreach (int key in keys)
         {
-            SimpleEntity foundEntity = GetSimpleEntityFromDictionary(dict, key, defaultEntity);
+            _ = GetSimpleEntityFromDictionary(dict, key, defaultEntity);
         }
     }
     
@@ -151,7 +150,7 @@ public class BenchmarkHashBasedSearch
 
         foreach (int key in TransformKeys(keys))
         {
-            SimpleEntity foundEntity = searchCallback(key)!;
+            _ = searchCallback(key)!;
         }
     }
     
@@ -162,6 +161,7 @@ sealed class SimpleEntity
 {
     public int Id { get; }
     
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public string Name { get; }
 
     public SimpleEntity(int id, string name)
