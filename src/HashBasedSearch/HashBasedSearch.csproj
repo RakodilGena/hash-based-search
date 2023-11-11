@@ -15,7 +15,7 @@
         <RepositoryUrl>https://github.com/RakodilGena/hash-based-search</RepositoryUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Version>1.0.2</Version>
+        <Version>6.0.0</Version>
         <Title>HashBasedSearch</Title>
         <Authors>RakodilGena</Authors>
     </PropertyGroup>
